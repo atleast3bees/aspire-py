@@ -1,5 +1,10 @@
-#TODO: Add your header here!
+"""
+Author : Rori Wu
 
+Date : 7/3/23
+
+Description : Project-1 practice functions
+"""
 
 
 def add_two (x):
@@ -9,24 +14,21 @@ def add_two (x):
 
     Implement this function then try running the code to check your work
     """
-
-    #TODO: Add functionality here
-    pass # Dont know what this is? look it up or ask brian
+    return x + 2 
+    pass 
 
 def is_even(x):
     """
     This function should return true if the number is even, else False
     """
-
-    #TODO: Add functionality here
+    return x % 2  == 0
     pass
 
 def is_odd(x):
     """
     This function should return true if the number is odd, else False
     """
-
-    #TODO: Add functionality here
+    return not(is_even(x))
     pass
 
 def for_fun(x):
@@ -34,8 +36,16 @@ def for_fun(x):
     This function should take any arbitrary number x,
     and return a list of all even numbers from -x to x
     """
-
-    #TODO: Add functionality here
+    lst = []
+    if x >= 0: 
+        for i in range(-x,x+1):
+            if is_even(i):
+                lst.append(i)
+    else:
+        for i in range(x,-x+1):
+            if is_even(i):
+                lst.append(i)
+    return lst
     pass
 
 def is_prime(x):
@@ -44,8 +54,15 @@ def is_prime(x):
 
     DO NOT GOOGLE! Remember prime numbers are only divisible by themselves and 1
     """
-
-    #TODO: Add functionality here
+    if x < 0:
+        x = -x
+    divisible_count = 0
+    for i in range(1,x+1):
+        if x % i == 0:
+            divisible_count += 1
+            if divisible_count > 2:
+                return False
+    return True
     pass
 
 def is_prime_robust(x):
@@ -54,8 +71,9 @@ def is_prime_robust(x):
 
     return False for bad input
     """
-
-    #TODO: Add functionality here
+    if isinstance(x, int) and not(isinstance(x, bool)):
+        return True
+    return False
     pass
 
 def n_fibonacci(n):
@@ -70,8 +88,15 @@ def n_fibonacci(n):
 
     Make sure inputs are robust, return False for bad inputs
     """
-
-    #TODO: Add functionality here
+    if isinstance(n, int) and not(isinstance(n, bool)):
+        if n==1:
+            return [0]
+        elif n>1:
+            lst = [0,1]
+            for i in range(1,n-1):
+                lst.append(lst[i-1]+lst[i]) 
+            return lst
+    return False
     pass
 
 def make_tree():
@@ -87,8 +112,10 @@ def make_tree():
 
     You CANNOT just use a bunch of individual prints
     """
-
-    #TODO: Add functionality here
+    width = 1
+    for i in range(1,6):
+        print(" "*(5-i) + "+"*width)
+        width += 2
     pass
 
 def make_tree_inverted():
@@ -103,21 +130,32 @@ def make_tree_inverted():
 
     You CANNOT just use a bunch of individual prints
     """
-
-    #TODO: Add functionality here
+    width = 9
+    for i in range(1,6):
+        print(" "*(i-1) + "+"*width)
+        width -= 2
     pass
 
 def dictionary_basics(d, key, value):
     """
-    This function takes a dictionary, key, and value
-
+    This function takes a dictionary, key, and value.
     Return a 3-tuple containing the following:
     - A sorted list of all the values whose keys contain the word "red"
     - The value of the key passed in
     - The key of the value passed in
     """
-
-    #TODO: Add functionality here
+    red_list = []
+    for i in d.keys():
+        if i.find("red")!=-1:
+            red_list.append(d[i])
+    red_list.sort()
+    d_value = d[key]
+    d_key = 0
+    for i in d.keys():
+        if str(d[i])==value:
+            d_key = i
+    tup = (red_list,d_value,d_key)
+    return tup
     pass
 
 
