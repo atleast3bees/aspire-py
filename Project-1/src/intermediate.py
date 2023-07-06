@@ -1,6 +1,12 @@
-#TODO: Add your header here!
+"""
+Author : Rori Wu
 
-#TODO: For test2, something goes here...
+Date : 7/6/23
+
+Description : Project-1 intermediate functions
+"""
+
+from numpy import random
 
 def uh_oh(integer, float, string, boolean, list, dictionary):
     """
@@ -40,18 +46,26 @@ def uh_oh(integer, float, string, boolean, list, dictionary):
     - Index out of range returns "donut"
     - Key errors return "eggplant"
     """
-
-    fail1 = integer + string
-
-    fail2 = float / boolean
-
-    fail3 = dictionary["I do not exist"]
-
-    fail4 = list[3]
-
-    fail5 = list.aye_im_walkin_ere()
-
-    #TODO: Add functionality here
+    try:
+        fail1 = integer + string
+    except:
+        return "apple"
+    try:
+        fail2 = float / boolean
+    except:
+        return "banana"
+    try:
+        fail3 = dictionary["I do not exist"]
+    except:
+        return "corn"
+    try:
+        fail4 = list[3]
+    except:
+        return "donut"
+    try:
+        fail5 = list.aye_im_walkin_ere()
+    except:
+        return "eggplant"
 
 class Avenger:
     """
@@ -94,8 +108,28 @@ class Avenger:
     None
     """
 
-
-    #TODO: Add functionality here
+    def __init__(self,name,secret_identity,health,power,agility,level=1):
+        self.name = name
+        self.secret_identity = secret_identity
+        if health > 100 or health < 0:
+            self.health = self.max_health = 100
+            
+        else:
+            self.health = self.max_health = health
+        if power > 1:
+            self.power = 1
+        elif power < 0:
+            self.power = 0
+        else:
+            self.power = power
+        if agility > 1:
+            self.agility = 1
+        elif agility < 0:
+            self.agility = 0
+        else:
+            self.agility = agility
+        self.level = level
+        self.exp = 0
 
 
 # =================================================================================================
@@ -104,7 +138,7 @@ class Avenger:
     # Now that we have written the constructor for our class, lets implement some functionality
     # Write the following functions according to the documentation...
 # =================================================================================================
-    #TODO: Add functionality here
+    
     """
     attacked()
 
@@ -124,7 +158,17 @@ class Avenger:
     dead      (boolean)   True if health below zero, else False
     """
 
-    #TODO: Add functionality here
+    def attacked(self,damage):
+        roll = random.rand()
+        if self.agility < roll:
+            if damage >= self.health:
+                self.health = 0
+                return True
+            else:
+                self.health -= damage
+                return False
+        return False
+
     """
     restore_health()
 
@@ -144,7 +188,11 @@ class Avenger:
     None
     """
 
-    #TODO: Add functionality here
+    def restore_health(self,restoration):
+        if self.health + restoration > self.max_health:
+            self.health = self.max_health
+        else:
+            self.health += restoration
     """
     reset()
 
@@ -157,7 +205,9 @@ class Avenger:
     None
     """
 
-    #TODO: Add functionality here
+    def reset(self):
+        self.health = self.max_health    
+
     """
     special_power()
 
@@ -174,7 +224,9 @@ class Avenger:
     Returns:
     None
     """
-
+    
+    def special_power(self):
+        raise NotImplementedError()    
 
 # =================================================================================================
 # DO NOT EDIT ANY CODE BELOW THIS LINE: Would be cheating...
