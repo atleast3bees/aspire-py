@@ -42,30 +42,26 @@ def uh_oh(integer, float, string, boolean, list, dictionary):
 
     - When i try adding mismatched types, return the string "apple"
     - Division by zero returns "banana"
-    - Attribute errors return "corn"
+    - Attribute errors return "eggplant"
     - Index out of range returns "donut"
-    - Key errors return "eggplant"
+    - Key errors return "corn"
     """
     try:
         fail1 = integer + string
-    except:
-        return "apple"
-    try:
         fail2 = float / boolean
-    except:
-        return "banana"
-    try:
         fail3 = dictionary["I do not exist"]
-    except:
-        return "corn"
-    try:
         fail4 = list[3]
-    except:
-        return "donut"
-    try:
         fail5 = list.aye_im_walkin_ere()
-    except:
+    except TypeError:
+        return "apple"
+    except ZeroDivisionError:
+        return "banana"
+    except AttributeError:
         return "eggplant"
+    except IndexError:
+        return "donut"
+    except KeyError:
+        return "corn"
 
 class Avenger:
     """
