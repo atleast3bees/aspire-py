@@ -222,7 +222,7 @@ class Avenger:
     """
     
     def special_power(self):
-        raise NotImplementedError()    
+        raise NotImplementedError    
 
 # =================================================================================================
 # DO NOT EDIT ANY CODE BELOW THIS LINE: Would be cheating...
