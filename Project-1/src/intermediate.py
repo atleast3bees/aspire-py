@@ -39,6 +39,7 @@ def uh_oh(integer, float, string, boolean, list, dictionary):
     I have implemented some code below that you are not to modify.
 
     Create a try-except block around that code to handle the errors that will arise.
+    ENSURE YOU ONLY HAVE ONE TRY BLOCK
 
     - When i try adding mismatched types, return the string "apple"
     - Division by zero returns "banana"
@@ -46,6 +47,7 @@ def uh_oh(integer, float, string, boolean, list, dictionary):
     - Index out of range returns "donut"
     - Key errors return "corn"
     """
+<<<<<<< HEAD
     try:
         fail1 = integer + string
         fail2 = float / boolean
@@ -62,6 +64,23 @@ def uh_oh(integer, float, string, boolean, list, dictionary):
         return "donut"
     except KeyError:
         return "corn"
+=======
+
+    #TODO: Add functionality here
+>>>>>>> upstream/main
+
+    # --------------------------------------------------------------------------------------------
+    # Do not modify the below
+    # --------------------------------------------------------------------------------------------
+    fail1 = integer + string
+    fail2 = float / boolean
+    fail3 = dictionary["I do not exist"]
+    fail4 = list[3]
+    fail5 = list.aye_im_walkin_ere()
+    # --------------------------------------------------------------------------------------------
+    # Do not modify the above
+    # --------------------------------------------------------------------------------------------
+
 
 class Avenger:
     """
