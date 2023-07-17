@@ -1,6 +1,12 @@
-#TODO: Add your header here!
+"""
+Author : Rori Wu
 
-#TODO: For test1, figure out how to import your Avenger class from intermediate.py
+Date : 7/17/23
+
+Description : Advanced python concepts
+"""
+
+from intermediate import Avenger
 
 """
 TEST 1
@@ -23,9 +29,10 @@ Additionally, lets have a special field just for T'Challa:
 - vibranium: (boolean)    initialized to True
 """
 
-#TODO: Add functionality here
-
-    #TODO: Add functionality here
+class BlackPanther(Avenger):
+    def __init__(self,name,secret_identity,health,power,agility,level=1,vibranium=True):
+        super().__init__(name,secret_identity,health,power,agility,level)
+        self.vibranium_level = vibranium
     """
     TEST 2
 
@@ -144,7 +151,7 @@ any state of a class
 # =================================================================================================
 # DO NOT EDIT ANY CODE BELOW THIS LINE: Would be cheating...
 # =================================================================================================
-    """
+"""
     ===============================================
     STOP HERE! DO NOT EDIT ANY CODE BELOW THE T-REX
     ===============================================
@@ -166,7 +173,7 @@ any state of a class
                    \_(\-(\`-`
                       "  "
 
-    """
+"""
 def check_input():
     while True:
         x = input("Be honest...[Yes/No]")
