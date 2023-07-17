@@ -6,6 +6,7 @@ Date : 7/17/23
 Description : Advanced python concepts
 """
 
+from numpy import random
 from intermediate import Avenger
 
 """
@@ -48,8 +49,10 @@ class BlackPanther(Avenger):
 
     NOTE: This is an example of an **override**
     """
-
-    #TODO: Add functionality here
+    def special_power(self):
+        self.agility = .99
+        self.power = .99
+        self.health -= 10
     """
     TEST 3
     
@@ -74,7 +77,16 @@ class BlackPanther(Avenger):
       deal damage back to the attacker, thus simulating the kinetic properties of his suit
     """
 
-#TODO: Add functionality here
+    def attacked(self,damage):
+        roll = random.rand()
+        if self.agility < roll:
+            if damage >= self.health:
+                self.health = 0
+                return (True,damage/2)
+            else:
+                self.health -= damage
+                return (False,damage/2)
+        return False
 """
 TEST 4-5
     
@@ -102,7 +114,27 @@ Hulk:
     - If it is, should set hulked_out to False and return string "HULK SMASH"
     - If hulked_out False, set to True and return the string "I'm always angry"
 """
-
+class IronMan(Avenger):
+    def __init__(self,name,secret_identity,health,power,agility,level=1,fuel=100):
+        super().__init__(name,secret_identity,health,power,agility,level)
+        self.fuel = fuel
+    def special_power(self):
+        if self.fuel >= 70:
+            self.fuel -= 70
+            return 40 + 20*random.rand()
+        else:
+            return -1
+class Hulk(Avenger):
+    def __init__(self,name,secret_identity,health,power,agility,level=1,hulked_out=True):
+        super().__init__(name,secret_identity,health,power,agility,level)
+        self.hulked_out = hulked_out
+    def special_power(self):
+        if self.hulked_out:
+            self.hulked_out = False
+            return "HULK SMASH"
+        else:
+            self.hulked_out = True
+            return "I'm always angry"
 """
 TEST 6
 

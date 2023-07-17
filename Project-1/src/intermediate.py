@@ -78,6 +78,8 @@ def uh_oh(integer, float, string, boolean, list, dictionary):
 """
 
 class Avenger:
+
+    _total_avengers = 0
     """
     This is a class, we use this to group data together into structures that make semantic sense
     Take note on a few things:
@@ -119,11 +121,11 @@ class Avenger:
     """
 
     def __init__(self,name,secret_identity,health,power,agility,level=1):
+        Avenger._total_avengers += 1
         self.name = name
         self.secret_identity = secret_identity
         if health > 100 or health < 0:
             self.health = self.max_health = 100
-            
         else:
             self.health = self.max_health = health
         if power > 1:
@@ -141,7 +143,21 @@ class Avenger:
         self.level = level
         self.exp = 0
 
+    @classmethod
+    def set_total_avengers(cls,x):
+        cls._total_avengers = x
+    
+    @classmethod
+    def get_total_avengers(cls):
+        return cls._total_avengers
 
+    @classmethod
+    def reset_total_avengers(cls):
+        cls._total_avengers = 0
+
+    @staticmethod
+    def foo():
+        return "Avenger"
 # =================================================================================================
     # Tests 2-5
 
