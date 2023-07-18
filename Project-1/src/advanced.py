@@ -86,7 +86,7 @@ class BlackPanther(Avenger):
             else:
                 self.health -= damage
                 return (False,damage/2)
-        return False
+        return (False,damage/2)
 """
 TEST 4-5
     
@@ -124,6 +124,7 @@ class IronMan(Avenger):
             return 40 + 20*random.rand()
         else:
             return -1
+
 class Hulk(Avenger):
     def __init__(self,name,secret_identity,health,power,agility,level=1,hulked_out=True):
         super().__init__(name,secret_identity,health,power,agility,level)
@@ -235,7 +236,7 @@ def test2():
 
 def test3():
     try:
-        bp = BlackPanther("Black Panther", "T'Challa", 80.5, .75, 1, level=2)
+        bp = BlackPanther("Black Panther", "T'Challa", 80.5, .75, 0, level=2)
         dead, recoil = bp.attacked(25)
         assert bp.health == 80.5 - 25
         assert not dead
@@ -247,7 +248,7 @@ def test3():
 def test4():
     try:
         iron_man = IronMan("Iron Man", "Tony Stark", 50, .33, 1)
-        assert issubclass(iron_man, Avenger)
+        assert issubclass(IronMan, Avenger)
         assert iron_man.fuel == 100
         damage = iron_man.special_power()
         assert iron_man.fuel == 30
@@ -261,7 +262,7 @@ def test4():
 def test5():
     try:
         hulk = Hulk("Hulk", "Bruce Banner", 250, .33, 1)
-        assert issubclass(hulk, Avenger)
+        assert issubclass(Hulk, Avenger)
         assert hulk.hulked_out
         quote = hulk.special_power()
         assert quote == "HULK SMASH"
@@ -277,7 +278,7 @@ def test6():
     try:
         hulk = Hulk("Hulk", "Bruce Banner", 250, .33, 1)
         hulk.reset_total_avengers()
-        assert hulk.get_total_avengers() == 3
+        assert hulk.get_total_avengers() == 0
         bp = BlackPanther("Black Panther", "T'Challa", 80.5, .75, 1, level=2)
         hulk2 = Hulk("Hulk", "Bruce Banner", 250, .33, 1)
         iron_man = IronMan("Iron Man", "Tony Stark", 50, .33, 1)

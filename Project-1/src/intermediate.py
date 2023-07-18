@@ -121,7 +121,6 @@ class Avenger:
     """
 
     def __init__(self,name,secret_identity,health,power,agility,level=1):
-        Avenger._total_avengers += 1
         self.name = name
         self.secret_identity = secret_identity
         if health > 100 or health < 0:
@@ -142,18 +141,19 @@ class Avenger:
             self.agility = agility
         self.level = level
         self.exp = 0
+        Avenger._total_avengers += 1
 
     @classmethod
     def set_total_avengers(cls,x):
-        cls._total_avengers = x
+        Avenger._total_avengers = x
     
     @classmethod
     def get_total_avengers(cls):
-        return cls._total_avengers
+        return Avenger._total_avengers
 
     @classmethod
     def reset_total_avengers(cls):
-        cls._total_avengers = 0
+        Avenger._total_avengers = 0
 
     @staticmethod
     def foo():
